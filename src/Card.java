@@ -11,11 +11,14 @@ public class Card {
         return value;
     }
 
+
     public int getSuit () {
         return suit;
     }
 
     public String toString () {
-        return Card;
+        String [] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}   ;
+        String [] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+        return values [this.value-2] + " " + suits [this.suit];
     }
 }
