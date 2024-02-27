@@ -1,14 +1,11 @@
 public class Card {
-    int value;
     int suit;
+    int value;
 
-    public Card (int value, int suit) {
-        this.value = value;
+    public Card (int suit, int value) {
         this.suit = suit;
-    }
+        this.value = value;
 
-    public int getValue () {
-        return value;
     }
 
 
@@ -16,9 +13,16 @@ public class Card {
         return suit;
     }
 
+    public int getValue () {
+        return value;
+    }
+
+
+
     public String toString () {
-        String [] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}   ;
         String [] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+        String [] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}   ;
+
         return values [this.value-2] + " " + suits [this.suit];
     }
 }
