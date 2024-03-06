@@ -6,6 +6,8 @@ public class Blackjack {
     private Deck deck;
     private ArrayList<Card> player;
     private ArrayList<Card> dealer;
+    private int playerBalance;
+    private int bettingMoney;
 
     Scanner kb = new Scanner(System.in);
 
@@ -14,6 +16,7 @@ public class Blackjack {
         deck = new Deck();
         player = new ArrayList<>();
         dealer = new ArrayList<>();
+        playerBalance = 50;
     }
 
     public static void main (String [] args) {
@@ -24,7 +27,7 @@ public class Blackjack {
     private void run() {
         // Deal initial cards
         dealInitialCards();
-
+        placeBet();
         // Show initial hands
         System.out.println("Dealer hand:\t" + dealer.get(0) + " ?");
         System.out.println("Player hand:\t" + player.get(0) + " " + player.get(1));
@@ -37,6 +40,20 @@ public class Blackjack {
 
         // Determine the winner
         determineWinner();
+
+        System.out.println ("Your balance: $" + playerBalance);
+    }
+
+    private void placeBet() {
+        System.out.println("Your current balance: $" + playerBalance);
+        System.out.println("Place your bet:");
+        bettingMoney = kb.nextInt();
+        while (bettingMoney <= 0 || bettingMoney > playerBalance) {
+            System.out.println("Invalid bet amount. Please enter a valid bet:");
+            bettingMoney = kb.nextInt();
+        }
+        kb.nextLine(); // Consume newline
+        playerBalance -= bettingMoney;
     }
 
     private void dealInitialCards() {
@@ -92,6 +109,9 @@ public class Blackjack {
             System.out.println("Bust! Dealer wins.");
         } else if (dealerTotal > 21 || playerTotal > dealerTotal) {
             System.out.println("Congratulations! You win!");
+            playerBalance += bettingMoney;
+            playerBalance += bettingMoney;
+            // make it so that when you lose you don't get that money back. or maybe that's just how it oges?
         } else if (playerTotal == dealerTotal) {
             System.out.println("It's a tie!");
         } else {
