@@ -1,7 +1,7 @@
 public class Card {
     int suit;
     int value;
-//
+//creates the cards, initializes cards, turns the int values into strings
     public Card (int suit, int value) {
         this.suit = suit;
         this.value = value;

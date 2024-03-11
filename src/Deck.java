@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-
+// this class creates the deck
+// shuffle and getCard methods created here
     private ArrayList<Card> deck;
 
     public Deck () {
